@@ -1,0 +1,7 @@
+collision : image     : name  : liquid : danger
+false     : grass.png : grass : false  : false
+false     : sand.png  : sand  : false  : false
+false     : earth.png : earth : false  : false
+true      : tree.png  : tree  : false  : false
+true      : wall.png  : wall  : false  : false
+false     : water.png : water : true   : false
