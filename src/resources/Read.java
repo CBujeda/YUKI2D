@@ -1,5 +1,6 @@
 package resources;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +18,16 @@ public class Read {
 
 	
 	public static ArrayList<BufferedImage> player() {
+		
+		File sadowf = new File("./data/player/sadow.png");
+		BufferedImage sadowimg = new BufferedImage(180,180,BufferedImage.TYPE_INT_ARGB); 
+		try {
+			sadowimg = ImageIO.read(sadowf);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		ArrayList<BufferedImage> list = new ArrayList<BufferedImage>();
 		File f = new File("./data/player/player.png");
 		BufferedImage imagen = new BufferedImage(180,180,BufferedImage.TYPE_INT_ARGB); 
@@ -28,7 +39,7 @@ public class Read {
 		}	//  x1,y1,x2,y2
 		for(int i = 0; i < 4; i++) {
 			for(int r = 0; r < 4; r++) {
-				list.add(imagen.getSubimage(45*r,45*i,45,45));
+				list.add(imageFusion(imagen.getSubimage(45*r,45*i,45,45),sadowimg));
 			}
 		}
 		return list;
@@ -137,4 +148,41 @@ public class Read {
 		}
 		return list;		
 	}
+	
+	public static ArrayList<File> sounds() {
+		ArrayList<File> fs = new ArrayList<File>();
+		File file = new File("./data/sounds/ambient/0.wav");
+		File file2 = new File("./data/sounds/ambient/1.wav");
+		fs.add(file);fs.add(file2);
+		return fs;
+	}
+	
+	public static BufferedImage icon() {
+		File f = new File("./data/config/icon.png");
+		BufferedImage icon = new BufferedImage(10,10,BufferedImage.TYPE_INT_ARGB); 
+		try {
+			icon = ImageIO.read(f);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return icon;
+	}
+	
+	
+	/**
+	 * Metodo el cual fusiona dos imagenes
+	 */
+	public static BufferedImage imageFusion( BufferedImage spriteTop, BufferedImage spriteDown) {
+		int w = Math.max(spriteDown.getWidth(), spriteTop.getWidth());
+		int h = Math.max(spriteDown.getHeight(), spriteTop.getHeight());
+		BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		Graphics g = combined.getGraphics();
+		g.drawImage(spriteDown, 0, 0, null);
+		g.drawImage(spriteTop, 0, 0, null);
+		g.dispose();
+		return combined;			
+	}
+	
 }

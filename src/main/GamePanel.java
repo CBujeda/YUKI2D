@@ -37,9 +37,10 @@ public class GamePanel extends JPanel implements Runnable{
 	// FPS
 	int fps = 60;
 	private TileManager tileM = new TileManager(this);
-	//TileManager tileM = new TileManager(this);
+	private Sound sound = new Sound(Read.sounds());
 	KeyHandler keyH = new KeyHandler(this);
 	public Player player = new Player(this,keyH);
+	private UI ui = new UI(this);
 	Thread gameThread;
 
 	
@@ -49,10 +50,11 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
-		this.setFocusable(true);		
+		this.setFocusable(true);
 	}
 	
 	public void setupGame() {
+		playMusic(0);
 	}
 	
 	public void startGameThread() {
@@ -101,6 +103,7 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g;
 		tileM.draw(g2);
 		player.draw(g2);
+		ui.draw(g2);
 		g2.dispose();
 	}
 
@@ -112,7 +115,27 @@ public class GamePanel extends JPanel implements Runnable{
 		this.tileM = tileM;
 	}
 	
+	public void playMusic(int i) {
+		sound.setFile(i);
+		sound.play();
+		sound.loop();
+	}
+	
+	public void stopMusic() {
+		sound.stop();
+	}
+	
+	public void playSoundEffect(int i) {
+		sound.setFile(i);
+		sound.play();
+	}
 	
 	
-	
+	// GETES AND SETTERS
+	public UI getUi() {
+		return ui;
+	}
+	public void setUi(UI ui) {
+		this.ui = ui;
+	}
 }

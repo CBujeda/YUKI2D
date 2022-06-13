@@ -69,19 +69,7 @@ public class TileManager {
 		}
 	}
 	
-	/**
-	 * Metodo el cual fusiona dos imagenes
-	 */
-	public BufferedImage imageFusion( BufferedImage spriteTop, BufferedImage spriteDown) {
-		int w = Math.max(spriteDown.getWidth(), spriteTop.getWidth());
-		int h = Math.max(spriteDown.getHeight(), spriteTop.getHeight());
-		BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-		Graphics g = combined.getGraphics();
-		g.drawImage(spriteDown, 0, 0, null);
-		g.drawImage(spriteTop, 0, 0, null);
-		g.dispose();
-		return combined;			
-	}
+
 
 
 
