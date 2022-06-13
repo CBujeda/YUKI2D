@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import entity.Player;
 import resources.Read;
 import tile.TileManager;
+import utils.Console;
 
 public class GamePanel extends JPanel implements Runnable{
 	// Serial
@@ -27,15 +28,15 @@ public class GamePanel extends JPanel implements Runnable{
 	public int screenHeight = tileSize * maxScreenRow; // 576 px
 	
 	// WORLD SETINGS
-	public final int maxWorldCol = 50;
-	public final int maxWorldRow = 50;
-	public final int worldWidth = tileSize * maxWorldCol;
-	public final int worldHeight = tileSize * maxWorldRow;
+	//public final int maxWorldCol = 50;
+	//public final int maxWorldRow = 50;
+	//public final int worldWidth = tileSize * maxWorldCol;
+	//public final int worldHeight = tileSize * maxWorldRow;
 	
 	
 	// FPS
 	int fps = 60;
-	TileManager tileM = new TileManager(this);
+	private TileManager tileM = new TileManager(this);
 	//TileManager tileM = new TileManager(this);
 	KeyHandler keyH = new KeyHandler(this);
 	public Player player = new Player(this,keyH);
@@ -48,19 +49,7 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
-		this.setFocusable(true);
-		Read.tileConfig();
-		
-		ArrayList<ArrayList<Integer>> l = Read.maps();
-		for(int i = 0; i < l.size(); i++) {
-			for(int r = 0; r < l.get(i).size();r++) {
-				System.out.print(l.get(i).get(r) + " ");
-			}
-			System.out.println();
-		}
-		
-		
-		
+		this.setFocusable(true);		
 	}
 	
 	public void setupGame() {
@@ -94,7 +83,8 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 
 			if(timer >= 1000000000) {
-				System.out.println("FPS: " + drawCount);
+				//System.out.println();
+				Console.msg("FPS: " + drawCount);
 				drawCount = 0;
 				timer = 0;
 			}
@@ -113,5 +103,16 @@ public class GamePanel extends JPanel implements Runnable{
 		player.draw(g2);
 		g2.dispose();
 	}
+
+	public TileManager getTileM() {
+		return tileM;
+	}
+
+	public void setTileM(TileManager tileM) {
+		this.tileM = tileM;
+	}
+	
+	
+	
 	
 }

@@ -10,6 +10,7 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 import tile.Tile;
+import utils.Console;
 import utils.Crypter;
 
 public class Read {
@@ -70,7 +71,8 @@ public class Read {
 		try {
 			Scanner sc = new Scanner(f);
 			if(sc.hasNextLine()) {
-				System.out.println("Cargando Configuracion de tiles... \n");
+				System.out.println();
+				Console.msg("Cargando Configuracion de tiles: \n");
 				System.out.println(sc.nextLine());	
 			}
 			while(sc.hasNextLine()) {

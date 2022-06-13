@@ -20,14 +20,15 @@ public class Player extends Entity{
 	
 	public final int screenX;
 	public final int screenY;
+	
 	int hasKey = 0;
 	
 	
 	public Player(GamePanel gp,KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
-		this.screenX = gp.screenWidth/2 - (gp.tileSize/2);
-		this.screenY = gp.screenHeight/2 - (gp.tileSize/2);
+		this.screenX = (gp.screenWidth/2 - (gp.tileSize/2));
+		this.screenY = (gp.screenHeight/2 - (gp.tileSize/2));
 		
 		solidArea = new Rectangle();// revisar
 		solidArea.x = 8;
@@ -41,8 +42,8 @@ public class Player extends Entity{
 	}
 	
 	public void setDefaultValues() {
-		worldX = gp.tileSize * (25-1);
-		worldY = gp.tileSize * (25-1);
+		worldX = (gp.tileSize * (gp.getTileM().getMapSizeX()/2))-gp.tileSize;
+		worldY = (gp.tileSize * (gp.getTileM().getMapSizeY()/2))-gp.tileSize;
 		//speed = gp.worldWidth/600;
 		speed = 4;
 		direction = "down";
@@ -69,7 +70,6 @@ public class Player extends Entity{
 	}
 	
 	public void update() {
-		
 		if( keyH.upPressed == true || 
 			keyH.downPressed == true || 
 			keyH.leftPressed == true || 

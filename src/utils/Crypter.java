@@ -61,6 +61,43 @@ public class Crypter {
 		return n1;
 	}
 	
+	final static int key = 12345;
+	
+	private static String[] codeStr_es() {
+		 String[] code1 = { "l","m","n","a","b",
+				 			"c","w","x","y","z",
+				 			"h","i","j","k","d",
+				 			"e","f","g","o","p",
+				 			"q","r","s","t","u"};
+		return code1;	
+	}
+	public static String inStringDataCode(String data) {
+		String n1="";
+		for(int i = 0; i < data.length(); i++) {
+			for(int r = 0; r < codeStr_es().length;r++) {
+				if(codeStr_es()[r].equalsIgnoreCase(data.substring(i,i+1))) {
+					int dat = (r*key +132496043);
+					n1 = n1 + Integer.toString(dat) + " ";
+				}
+			}
+		}
+		return n1;
+	}
+	
+	public static String inStringDataDeCode(String data) {
+		String n1="";
+		String[] datos = data.split(" ");
+		for(int i = 0; i < datos.length; i++) {
+			try {
+				int dat = Integer.parseInt(datos[i]);
+				int r = ((dat - 132496043)/key);
+				n1 = n1 + codeStr_es()[r];
+			}catch(Exception e) {
+				Console.err("[code x801] Error en descifrado de datos"+ e);
+			}
+		}
+		return n1;
+	}
 	
 	public static boolean random() {
 		return Math.random() < 0.5;
