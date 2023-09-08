@@ -4,4 +4,16 @@ false     : sand.png  : sand  : false  : false
 false     : earth.png : earth : false  : false
 true      : tree.png  : tree  : false  : false
 true      : wall.png  : wall  : false  : false
-false     : water.png : water : true   : false
+false     : water/water00.png : water : true   : false
+false     : water/water02.png : water2 : true   : false
+false     : water/water03.png : water3 : true   : false
+false     : water/water04.png : water4 : true   : false
+false     : water/water05.png : water5 : true   : false
+false     : water/water06.png : water6 : true   : false
+false     : water/water07.png : water7 : true   : false
+false     : water/water08.png : water8 : true   : false
+false     : water/water09.png : water9 : true   : false
+false     : water/water10.png : water10 : true   : false
+false     : water/water11.png : water11 : true   : false
+false     : water/water12.png : water12 : true   : false
+false     : water/water13.png : water13 : true   : false

@@ -45,8 +45,6 @@ public class TileManager {
 		mapSizeY = mapData.get(0).size();
 	}
 	
-	
-	
 	public void draw(Graphics2D g2) {
 		for(int worlCol1 = 0; worlCol1 < mapData.size();worlCol1++ ) {
 			for(int worldRow2 = 0; worldRow2 < mapData.get(worlCol1).size(); worldRow2++) {
@@ -68,10 +66,6 @@ public class TileManager {
 			}
 		}
 	}
-	
-
-
-
 
 	public int getMapSizeX() {
 		return mapSizeX;
@@ -84,6 +78,18 @@ public class TileManager {
 	}
 	public void setMapSizeY(int mapSizeY) {
 		this.mapSizeY = mapSizeY;
+	}
+	public ArrayList<Tile> getTiles() {
+		return tiles;
+	}
+	public void setTiles(ArrayList<Tile> tiles) {
+		this.tiles = tiles;
+	}
+	public ArrayList<ArrayList<Integer>> getMapData() {
+		return mapData;
+	}
+	public void setMapData(ArrayList<ArrayList<Integer>> mapData) {
+		this.mapData = mapData;
 	}
 	
 	

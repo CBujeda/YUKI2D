@@ -31,11 +31,11 @@ public class Player extends Entity{
 		this.screenY = (gp.screenHeight/2 - (gp.tileSize/2));
 		
 		solidArea = new Rectangle();// revisar
-		solidArea.x = 8;
+		solidArea.x = 10;
 		solidArea.y = 16;
 		solidAreaDefaultX =  solidArea.x ;
 		solidAreaDefaultY = solidArea.y;
-		solidArea.width = 32;
+		solidArea.width = 32-10;
 		solidArea.height = 32;
 		setDefaultValues();
 		getPlayerImage();
@@ -46,6 +46,8 @@ public class Player extends Entity{
 		worldY = (gp.tileSize * (gp.getTileM().getMapSizeY()/2))-gp.tileSize;
 		//speed = gp.worldWidth/600;
 		speed = 4;
+		lives = 10;
+		livesMax = 10;
 		direction = "down";
 	}
 	
@@ -89,6 +91,11 @@ public class Player extends Entity{
 			}
 
 			collisionOn = false;
+			gp.getcCheker().checkTile(this);
+			/*
+			int objIndex = gp.cCheker.checkObject(this, true);
+			pickUpObject(objIndex);
+			*/
 
 			if(collisionOn == false) {
 				switch(direction) {

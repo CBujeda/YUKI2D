@@ -1,0 +1,6 @@
+engine=YUKI2D
+bdengine=yuki.encoder
+2D=1
+online-server-engine=false
+ip=localhost
+pakage=engine.yuki.game

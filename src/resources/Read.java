@@ -170,6 +170,57 @@ public class Read {
 		return icon;
 	}
 	
+	public static BufferedImage frontMain() {
+		File f = new File("./data/ui/front/main.png");
+		BufferedImage img = new BufferedImage(10,10,BufferedImage.TYPE_INT_ARGB); 
+		try {
+			img = ImageIO.read(f);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return img;
+	}
+	
+	public static ArrayList<File> fonts() {
+		File f = new File("./data/ui/fonts");
+		File[] list = f.listFiles();
+		ArrayList<File> l = new ArrayList<File>();
+		for(int i = 0; i < list.length;i++) {
+			
+			String[] data = list[i].getName().split("\\.");
+			String extension = "";
+			if(data.length > 1) {
+				extension = data[1];
+			}else {
+				extension = "";
+			}
+			if(extension.equalsIgnoreCase("ttf")) {
+				l.add(list[i]);
+			}
+		}
+		return l;
+	}
+	
+	
+	public static ArrayList<BufferedImage> heart() {
+		ArrayList<BufferedImage> list = new ArrayList<BufferedImage>();
+		File f = new File("./data/ui/lives.png");
+		BufferedImage imagen = new BufferedImage(180,180,BufferedImage.TYPE_INT_ARGB); 
+		try {
+			imagen = ImageIO.read(f);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	//  x1,y1,x2,y2
+		for(int i = 0; i < 5; i++) {
+				list.add(imagen.getSubimage(14*i,0,14,13));
+		}
+		return list;
+	}
+	
+	
 	
 	/**
 	 * Metodo el cual fusiona dos imagenes
