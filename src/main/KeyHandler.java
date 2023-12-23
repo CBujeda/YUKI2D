@@ -46,6 +46,17 @@ public class KeyHandler implements KeyListener {
 				}
 			}
 			
+			if(code == KeyEvent.VK_ESCAPE) {
+				if(gp.isGameStart()) {
+					if(gp.isPauseGame()) {
+						gp.setPauseGame(false);
+					}else {
+						gp.setPauseGame(true);
+					}
+				}
+			}
+			
+			
 		}else {
 			if(code == KeyEvent.VK_UP) {
 				gp.getUi().setUp(1);

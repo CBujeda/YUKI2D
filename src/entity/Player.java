@@ -46,7 +46,7 @@ public class Player extends Entity{
 		worldY = (gp.tileSize * (gp.getTileM().getMapSizeY()/2))-gp.tileSize;
 		//speed = gp.worldWidth/600;
 		speed = 4;
-		lives = 10;
+		lives = 5;
 		livesMax = 10;
 		direction = "down";
 	}

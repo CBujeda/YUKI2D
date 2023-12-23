@@ -29,9 +29,14 @@ public class UI {
 	private int up;
 	private int down;
 	private int enter;
+	private int width;
+	private int height;
 	
 	public UI(GamePanel gp) {
 		super();
+		
+		this.width = (gp.screenWidth);
+		this.height = (gp.screenHeight);
 		this.gp = gp;
 		arial_40 = new Font("Arial",Font.PLAIN,20);
 		lb = new ListButton(new String[] {"Jugar","Online","Config","Exit"});
@@ -71,6 +76,9 @@ public class UI {
 		if(gp.devMode()) {
 			drawDev(g2);
 		}
+		if(gp.isPauseGame()){
+			drawPlayerPauseGameGUI(g2);
+		}
 	}
 	
 	
@@ -93,6 +101,7 @@ public class UI {
 			drawString(str,g2.getFont(),Color.white,width,height,size,Font.BOLD, g2);
 		}
 	}
+	
 	public void mainMenuAcction() {
 		int acc = ifselected();
 		if(acc == 0) {
@@ -147,6 +156,20 @@ public class UI {
 		drawString(ram[1],g2.getFont(),Color.green,40,posicion*4,20,Font.BOLD, g2);
 		drawString(ram[2],g2.getFont(),Color.orange,40,posicion*5,20,Font.BOLD, g2);
 		
+	}
+	
+	public void drawPlayerPauseGameGUI(Graphics2D g2) {
+		int posicion = g2.getFont().getSize();
+		g2.setColor(new Color(0,0,0,100));
+		
+		int height = gp.tileSize*9;
+		int width = gp.tileSize*8;
+		g2.fillRect((this.width/2)-(width/2),(this.height/2)-(height/2),width,height);
+		
+		drawString("MENU",
+			g2.getFont(),Color.white,
+			(this.width/2)-(width/2),(this.height/2)-(height/2)+GraphicUtils.getHeightText("M", g2)
+			,20,Font.BOLD, g2);
 	}
 	
 	

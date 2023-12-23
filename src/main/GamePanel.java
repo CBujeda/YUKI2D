@@ -30,6 +30,9 @@ public class GamePanel extends JPanel implements Runnable{
 	public int screenHeight = tileSize * maxScreenRow; // 576 px
 	// DevMode
 	private boolean devMode;
+	// PauseGamePanel
+	private boolean pauseGame;
+	
 	//STATE
 	private boolean gameStart;
 	private boolean online;
@@ -57,6 +60,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void setupGame() {
 		devMode = false;
+		pauseGame = false;
 		gameStart = false;
 		online = false;
 		playMusic(0);
@@ -289,6 +293,14 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void setGameThread(Thread gameThread) {
 		this.gameThread = gameThread;
+	}
+
+	public boolean isPauseGame() {
+		return pauseGame;
+	}
+
+	public void setPauseGame(boolean pauseGame) {
+		this.pauseGame = pauseGame;
 	}
 	
 }
