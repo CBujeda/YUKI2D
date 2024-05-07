@@ -118,7 +118,11 @@ public class Player extends Entity{
 			}
 		}	
 	}
-
+	
+	/*
+	 * Pre:
+	 * Post: Sistema de dibujado grafico del jugador
+	 */
 	public void draw(Graphics2D g2) {
 		/*
 			g2.setColor(Color.white);
